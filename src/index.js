@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//리덕스 사용을 위한 Prover객체 참조
+import { Provider } from 'react-redux';
+
+//리덕스 폴더에서 만들어둔 스토어구성함수 호출
+import { configureStore } from './redux/store';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={configureStore()}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
