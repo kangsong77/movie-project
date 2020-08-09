@@ -1,50 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Moive from './MovieFunction';
-import axios from "axios";
+import axios from 'axios';
 
-class ReactMovie extends React.Component{
-    state = {
-      isLoading: true, // Loading Swich
-      movies: [] // Movies Data
+const MoviePoster = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [movies, setMovie] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const res = await axios.get(
+          `https://yts-proxy.now.sh/list_movies.json?sort_by=rating`
+        );
+        setMovie(res.data.data.movies);
+      } catch (e) {
+        console.log(e);
+      }
+      setIsLoading(false);
     };
-    
-    getMovies = async () => { // wait untill get API Data
-        const {
-          data: {
-            data: {movies}
-          }
-        } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+    fetchData();
+  }, []);
 
-        console.log(movies);
-        this.setState({movies, isLoading: false}); // isLoading State False Change
-      };
-      
-      componentDidMount(){  // when render after on Func
-        this.getMovies();
-      };
+  if (isLoading) return <div>대기중...</div>;
 
-    render() {
-      const { isLoading, movies } = this.state; // state in const
-      return (
-      <section className="container">{isLoading ? ( // if True Loading, False Movies Data using Map 
-         <div className="loader">
-           <span className="loader_text">Loading....</span>  
-           </div> 
-           ): (
-             <div className="movies">
-               {movies.map(movie => (  
-         <Moive  //Movie Copmnenet 
-          key={movie.id} // APU JSON Data Props
-          id={movie.id}
-          year={movie.title}
-          summary={movie.summary}
-          poster={movie.medium_cover_image}
+  if (!movies) {
+    return null;
+  }
+
+  return (
+    <section className='container'>
+      <div className='movies'>
+        {movies.map((movie) => (
+          <Moive //Movie Copmnenet
+            key={movie.id} // APU JSON Data Props
+            id={movie.id}
+            year={movie.title}
+            summary={movie.summary}
+            poster={movie.medium_cover_image}
           />
-          ))}
-          </div>
-           )}
-           </section>
-      );
-    }};
+        ))}
+      </div>
+    </section>
+  );
+};
 
-    export default ReactMovie;
+export default MoviePoster;

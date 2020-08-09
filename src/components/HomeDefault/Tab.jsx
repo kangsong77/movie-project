@@ -6,12 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MovieList from '../MovieList/movie_Main';
 //import { grey, pink, orange } from '@material-ui/core/colors';
+import MoviePoster from './MoviePoster';
 
 class TabTutorial extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: 0,
+      weekly: ['20200706', '20200720', '20200727'],
     };
   }
   a11yProps = (index) => {
@@ -27,7 +29,7 @@ class TabTutorial extends Component {
     const tempStyle = {
       textAlignVertical: 'center',
       background: 'black',
-      paddingLeft: '50px',
+      paddingLeft: '5px',
     };
 
     return (
@@ -57,17 +59,21 @@ class TabTutorial extends Component {
         </AppBar>
 
         <TabPanel style={{}}>
+          {/*   <TabPanel value={this.state.value} index={0}>
+            <h2 style={{ color: 'white' }}>7월 2주차</h2>
+            <MovieFunction></MovieFunction>
+          </TabPanel> */}
           <TabPanel value={this.state.value} index={0}>
             <h2 style={{ color: 'white' }}>7월 2주차</h2>
-            <MovieList>20200706</MovieList>
+            <MoviePoster></MoviePoster>
           </TabPanel>
           <TabPanel value={this.state.value} index={1}>
             <h2 style={{ color: 'white' }}>7월 3주차</h2>
-            <MovieList>20200720</MovieList>
+            <MovieList>{this.state.weekly[1]}</MovieList>
           </TabPanel>
           <TabPanel value={this.state.value} index={2}>
             <h2 style={{ color: 'white' }}> 7월 4주차</h2>
-            <MovieList>20200727</MovieList>
+            <MovieList>{this.state.weekly[2]}</MovieList>
           </TabPanel>
         </TabPanel>
       </div>
