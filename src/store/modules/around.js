@@ -23,19 +23,19 @@ const reducer = handleActions(
     [aroundActions.REQUEST]: (state, _action) => state,
 
     [aroundActions.SUCCESS]: (state, action) => {
-      return produce(state, draft => {
+      return produce(state, (draft) => {
         draft.aroundSuccess = true;
         draft.result = action.payload.result;
       });
     },
 
     [aroundActions.FAILURE]: (state, action) => {
-      return produce(state, draft => {
+      return produce(state, (draft) => {
         draft.aroundError = action.payload.error;
       });
     },
   },
-  initialState,
+  initialState
 );
 
 export default reducer;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieItem = ({ movie }) => {
   const { rank, audiAcc, movieNm } = movie;
-  console.log(movie);
+
   return (
     <div>
       <div style={{ color: 'white' }} className='rank'>

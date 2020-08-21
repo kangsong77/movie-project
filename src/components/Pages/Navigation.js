@@ -15,7 +15,8 @@ import { useSelector } from 'react-redux';
 //ksong 0803 함수형 변환
 const Navigation = () => {
   //ksong 0803 로그인 정보를 리덕스에서 불러옴
-  const isLogin = useSelector((state) => state.Account.loading);
+  // const isLogin = useSelector((state) => state.Account.loading);
+  const isLogin = false;
 
   return (
     <React.Fragment>

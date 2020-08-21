@@ -65,7 +65,8 @@ class TabTutorial extends Component {
           </TabPanel> */}
           <TabPanel value={this.state.value} index={0}>
             <h2 style={{ color: 'white' }}>7월 2주차</h2>
-            <MoviePoster></MoviePoster>
+            {/* <MoviePoster></MoviePoster> */}
+            <MovieList>{this.state.weekly[0]}</MovieList>
           </TabPanel>
           <TabPanel value={this.state.value} index={1}>
             <h2 style={{ color: 'white' }}>7월 3주차</h2>

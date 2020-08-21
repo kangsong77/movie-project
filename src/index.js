@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 
 //리덕스 폴더에서 만들어둔 스토어구성함수 호출
-import { configureStore } from 'store/index';
+import configureStore from 'store/index';
 
 ReactDOM.render(
   <Provider store={configureStore()}>
