@@ -33,51 +33,53 @@ class TabTutorial extends Component {
     };
 
     return (
-      <div style={tempStyle}>
-        <AppBar
-          style={{ background: '#567f99', width: '100%' }}
-          position='static'
-        >
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            aria-label='simple tabs example'
-            TabIndicatorProps={{
-              style: {
-                background: '#ccccff',
-                height: '60px',
-                top: '0px',
-                opacity: '50%',
-              },
-            }}
-            //  TabIndicatorProps={{style:{background:"#ccccff", height:"2px", top:"45px", opacity: "50%"}}}
+      <section id='weeklyrank' >
+        <div style={tempStyle}>
+          <AppBar
+            style={{ background: '#567f99', width: '100%' }}
+            position='static'
           >
-            <Tab label='7월 2주' {...this.a11yProps(0)} />
-            <Tab label='7월 3주' {...this.a11yProps(1)} />
-            <Tab label='7월 4주' {...this.a11yProps(2)} />
-          </Tabs>
-        </AppBar>
+            <Tabs
+              value={this.state.value}
+              onChange={this.handleChange}
+              aria-label='simple tabs example'
+              TabIndicatorProps={{
+                style: {
+                  background: '#ccccff',
+                  height: '60px',
+                  top: '0px',
+                  opacity: '50%',
+                },
+              }}
+              //  TabIndicatorProps={{style:{background:"#ccccff", height:"2px", top:"45px", opacity: "50%"}}}
+            >
+              <Tab label='7월 2주' {...this.a11yProps(0)} />
+              <Tab label='7월 3주' {...this.a11yProps(1)} />
+              <Tab label='7월 4주' {...this.a11yProps(2)} />
+            </Tabs>
+          </AppBar>
 
-        <TabPanel style={{}}>
-          {/*   <TabPanel value={this.state.value} index={0}>
-            <h2 style={{ color: 'white' }}>7월 2주차</h2>
-            <MovieFunction></MovieFunction>
-          </TabPanel> */}
-          <TabPanel value={this.state.value} index={0}>
-            <h2 style={{ color: 'white' }}>7월 2주차</h2>
-            {/* <MoviePoster></MoviePoster> */}
-            <MovieList>{this.state.weekly[0]}</MovieList>
+          <TabPanel style={{}}>
+            {/*   <TabPanel value={this.state.value} index={0}>
+              <h2 style={{ color: 'white' }}>7월 2주차</h2>
+              <MovieFunction></MovieFunction>
+            </TabPanel> */}
+            <TabPanel value={this.state.value} index={0}>
+              <h2 style={{ color: 'white' }}>7월 2주차</h2>
+              {/* <MoviePoster></MoviePoster> */}
+              <MovieList>{this.state.weekly[0]}</MovieList>
+            </TabPanel>
+            <TabPanel value={this.state.value} index={1}>
+              <h2 style={{ color: 'white' }}>7월 3주차</h2>
+              <MovieList>{this.state.weekly[1]}</MovieList>
+            </TabPanel>
+            <TabPanel value={this.state.value} index={2}>
+              <h2 style={{ color: 'white' }}> 7월 4주차</h2>
+              <MovieList>{this.state.weekly[2]}</MovieList>
+            </TabPanel>
           </TabPanel>
-          <TabPanel value={this.state.value} index={1}>
-            <h2 style={{ color: 'white' }}>7월 3주차</h2>
-            <MovieList>{this.state.weekly[1]}</MovieList>
-          </TabPanel>
-          <TabPanel value={this.state.value} index={2}>
-            <h2 style={{ color: 'white' }}> 7월 4주차</h2>
-            <MovieList>{this.state.weekly[2]}</MovieList>
-          </TabPanel>
-        </TabPanel>
-      </div>
+        </div>
+      </section>
     );
   }
 }

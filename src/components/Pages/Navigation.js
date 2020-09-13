@@ -44,38 +44,21 @@ const Navigation = () => {
                 </AnchorLink>
               </li>
               <li>
-                <AnchorLink offset={() => 100} href='#about'>
-                  About
+                <AnchorLink offset={() => 100} href='#nowplaying'>
+                  NowPlaying
                 </AnchorLink>
               </li>
               <li>
-                <AnchorLink offset={() => 100} href='#services'>
-                  Services
+                <AnchorLink offset={() => 100} href='#weeklyrank'>
+                  WeeklyRank
                 </AnchorLink>
               </li>
+             
               <li>
-                <AnchorLink offset={() => 100} href='#project'>
-                  Project
+                <AnchorLink offset={() => 100} href='#login'>
+                  Login
+                 {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
                 </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink offset={() => 100} href='#clients'>
-                  Clients
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink offset={() => 100} href='#team'>
-                  Team
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink offset={() => 100} href='#blog'>
-                  Blog
-                </AnchorLink>
-              </li>
-              {/* ksong 0803 */}
-              <li>
-                {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
               </li>
             </ul>
           </nav>
@@ -118,43 +101,22 @@ const Navigation = () => {
                     </AnchorLink>
                   </li>
                   <li>
-                    <AnchorLink offset={() => 100} href='#about'>
-                      About
-                    </AnchorLink>
-                  </li>
-                  <li>
-                    <AnchorLink href='#services' offset={() => 100}>
-                      Services
-                    </AnchorLink>
-                  </li>
-                  <li>
-                    <AnchorLink href='#project' offset={() => 100}>
-                      Project
-                    </AnchorLink>
-                  </li>
-                  <li>
-                    <AnchorLink href='#clients' offset={() => 100}>
-                      Clients
-                    </AnchorLink>
-                  </li>
-                  <li>
-                    <AnchorLink href='#team' offset={() => 100}>
-                      Team
-                    </AnchorLink>
-                  </li>
-                  <li>
-                    <AnchorLink href='#blog' offset={() => 100}>
-                      Blog
-                    </AnchorLink>
-                  </li>
-                  {/* ksong 0803 */}
-                  <li>
-                    {isLogin ? (
-                      <LogoutButton />
-                    ) : (
-                      <Link to='/login'>LogIn</Link>
-                    )}
-                  </li>
+                <AnchorLink offset={() => 100} href='#nowplaying'>
+                  NowPlaying
+                </AnchorLink>
+              </li>
+              <li>
+                <AnchorLink offset={() => 100} href='#weeklyrank'>
+                  WeeklyRank
+                </AnchorLink>
+              </li>
+             
+              <li>
+                <AnchorLink offset={() => 100} href='#login'>
+                 {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
+                </AnchorLink>
+              </li>
+                  
                 </ul>
               </nav>
 

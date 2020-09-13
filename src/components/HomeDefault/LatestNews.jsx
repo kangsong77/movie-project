@@ -44,7 +44,7 @@ function LatestNews() {
   });
 
   return !isLoading ? (
-    <section id='blog' className='blog-area uk-dark uk-blog uk-section'>
+    <section id='nowplaying' className='blog-area uk-dark uk-blog uk-section'>
       <div className='uk-container'>
         <div className='uk-section-title section-title'>
           <span>현재 상영중 영화 목록</span>
