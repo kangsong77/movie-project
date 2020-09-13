@@ -33,10 +33,10 @@ class TabTutorial extends Component {
     };
 
     return (
-      <section id='weeklyrank' >
-        <div style={tempStyle}>
+      <section id='weeklyrank' className='blog-area uk-dark uk-blog uk-section'>
+        <div className='uk-container'>
           <AppBar
-            style={{ background: '#567f99', width: '100%' }}
+            style={{ background: '#567f99' }}
             position='static'
           >
             <Tabs

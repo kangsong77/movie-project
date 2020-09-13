@@ -53,7 +53,11 @@ const Navigation = () => {
                   WeeklyRank
                 </AnchorLink>
               </li>
-             
+              <li>
+                <AnchorLink offset={() => 100} href='#blog'>
+                  Blog
+                </AnchorLink>
+              </li>
               <li>
                 <AnchorLink offset={() => 100} href='#login'>
                   Login
@@ -110,7 +114,11 @@ const Navigation = () => {
                   WeeklyRank
                 </AnchorLink>
               </li>
-             
+              <li>
+                <AnchorLink offset={() => 100} href='#blog'>
+                  Blog
+                </AnchorLink>
+              </li>
               <li>
                 <AnchorLink offset={() => 100} href='#login'>
                  {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
