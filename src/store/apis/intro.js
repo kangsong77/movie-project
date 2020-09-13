@@ -7,11 +7,12 @@ export default async function introAPI() {
   trendingList = trendingList.results;
   let randomMovieID =
     trendingList[Math.floor(Math.random() * trendingList.length)].id;
-
+  
   while (
     !randomMovie.backdropPath ||
     !randomMovie.title ||
-    !randomMovie.tagline
+    !randomMovie.tagline ||
+    !randomMovie.overview 
   ) {
     randomMovieID =
       trendingList[Math.floor(Math.random() * trendingList.length)].id;
@@ -21,6 +22,7 @@ export default async function introAPI() {
     randomMovie.title = result.title;
     randomMovie.tagline = result.tagline;
     randomMovie.id = result.id;
+    randomMovie.overview = result.overview;
   }
 
   return randomMovie;

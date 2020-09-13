@@ -8,7 +8,7 @@ import Home from './components/Pages/Home';
 
 function App() {
   return (
-    <Router>
+    <Router basename={window.location.pathname || ''}>
       <React.Fragment>
         <Switch>
           <Route exact={true} path='/' component={Home} />
