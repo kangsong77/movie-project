@@ -59,10 +59,8 @@ const Navigation = () => {
                 </AnchorLink>
               </li>
               <li>
-                <AnchorLink offset={() => 100} href='#login'>
                   Login
                  {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
-                </AnchorLink>
               </li>
             </ul>
           </nav>
@@ -120,9 +118,7 @@ const Navigation = () => {
                 </AnchorLink>
               </li>
               <li>
-                <AnchorLink offset={() => 100} href='#login'>
                  {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
-                </AnchorLink>
               </li>
                   
                 </ul>

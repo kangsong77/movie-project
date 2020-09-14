@@ -61,7 +61,7 @@ function LatestNews() {
           {...options}
         >
           {aroundSuccess
-            ? result.map((movie) => <LatestNewsItem movie={movie} />)
+            ? result.map((movie) => <LatestNewsItem key={movie.id} movie={movie} />)
             : null}
         </OwlCarousel>
       </div>

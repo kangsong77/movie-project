@@ -5,7 +5,7 @@ import '../../assets/css/mystyle.css';
 
 const LatestNewsItem = ({ movie }) => {
   return (
-    <div key={movie.id} className='single-blog-post'>
+    <div className='single-blog-post'>
       <div className='blog-post-image'>
         <Link to='#'>
           <img src={movie.backdropPath} alt={movie.title} />
