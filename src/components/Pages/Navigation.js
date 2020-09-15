@@ -59,7 +59,6 @@ const Navigation = () => {
                 </AnchorLink>
               </li>
               <li>
-                  Login
                  {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
               </li>
             </ul>

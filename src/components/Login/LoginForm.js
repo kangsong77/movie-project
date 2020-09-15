@@ -49,6 +49,7 @@ const LoginForm = () => {
 
   return (
     <>
+    
       <section id='login' className='contact-area uk-contact uk-section'>
         <div className='uk-container'>
           <div className='uk-section-title section-title'>

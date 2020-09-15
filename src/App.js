@@ -3,8 +3,8 @@ import './App.css';
 //ksong 0803
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Pages/Login';
-
 import Home from './components/Pages/Home';
+import Detail from './components/Pages/Detail';
 
 function App() {
   return (
@@ -13,6 +13,11 @@ function App() {
         <Switch>
           <Route exact={true} path='/' component={Home} />
           <Route exact path='/login' component={Login} />
+          <Route exact path="/detail/:id"
+            render={({ match }) => (
+              <Detail key={match.params.id} match={match} />
+            )}
+          />
         </Switch>
       </React.Fragment>
     </Router>

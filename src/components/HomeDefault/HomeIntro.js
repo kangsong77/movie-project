@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { introActions } from 'store/modules/intro';
 // import Loader from '../../components/Loader/Loader';
 import useComponentWillMount from 'hooks/useComponentWillMount';
-import Preloader from '../../components/Common/Preloader';
+import Preloader from 'components/Common/Preloader';
 
   
 function HomeIntro() {
@@ -34,7 +34,7 @@ function HomeIntro() {
                         <p>
                           {result.overview}
                         </p>
-                        <Link to='#' className='uk-button uk-button-default'>
+                        <Link to={`/detail/${result.id}`} className='uk-button uk-button-default'>
                           자세히 보기
                         </Link>
                       </div>
