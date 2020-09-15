@@ -20,7 +20,8 @@ const getMovieDetail = async id => {
     title: result.title,
     originalTitle: result.original_title,
     tagline: result.tagline,
-    releaseDate: parseInt(result.release_date, 10),
+    releaseYear: parseInt(result.release_date, 10),
+    releaseDate: result.release_date,
     runtime: `${result.runtime} 분`,
     rating: result.vote_average,
     genres,
@@ -65,7 +66,7 @@ const getMovieVideos = async id => {
 const getMovieCasts = async id => {
   const rawResult = await fetchData(`movie/${id}/credits`);
   const result = rawResult.cast;
-
+  
   const casts = result.map(cast => {
     let profilePath = `${imagePath.w500}${cast.profile_path}`;
     if (cast.profile_path === null) {

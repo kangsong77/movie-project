@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import DetailCasts from './DetailCasts';
+import DetailPhotos from './DetailPhotos';
+import DetailVideos from './DetailVideos';
+import DetailSimilars from './DetailSimilars';
+
+import 'assets/css/mystyle.css';
 
 const DetailPage = () => {
   const { result } = useSelector(state => state.detail);
@@ -15,41 +21,46 @@ const DetailPage = () => {
                 </ul>
             </div>
       </section>  
-          
+     
       <section className="project-details-area uk-project-details uk-section">
             <div className="uk-container">
                 <div className="uk-grid uk-flex project-details">
-                    <div className="project-details-img uk-width-expand">
+                    <div className="uk-flex detailposter-image " >
+                    {/* <div className="uk-flex uk-width-1-5 " > */}
                         <img src={result.posterPath} alt="포스터" />
                     </div>
 
                     <div className="item uk-width-1-5">
                         <div className="project-details-info">
+                            <h2>{result.title}<span> ({result.releaseYear})</span></h2><br></br>
+                           
                             <ul>
-                                <li><span>Customer Name:</span> Steven John</li>
-                                <li><span>Category:</span> Art & Design</li>
-                                <li><span>Date:</span> 04/11/2019</li>
-                                <li><span>Status:</span> In Process</li>
-                                <li><span>Demo Link:</span> <Link to="#">www.gunter.com</Link></li>
-                                <li><span>Tags:</span> <Link to="#">Art</Link>, <Link to="#">Design</Link></li>
-                                <li>
-                                    <span>Share:</span>
-                                    
-                                    <ul>
-                                        <li><Link to="#"><i className="flaticon-logo"></i></Link></li>
-                                        <li><Link to="#"><i className="flaticon-twitter"></i></Link></li>
-                                        <li><Link to="#"><i className="flaticon-logo-1"></i></Link></li>
-                                        <li><Link to="#"><i className="flaticon-linkedin"></i></Link></li>
-                                    </ul>
-                                </li>
+                                <li>관람객 평점 : <span> ★ {result.rating}</span></li>
+                                <li>개봉 : <span> {result.releaseDate}</span></li>
+                                <li>장르 : <span> {result.genres}</span></li>
+                                <li>러닝타임 : <span> {result.runtime}</span></li>
+                                <li># : <span> {result.tagline}</span></li>
                             </ul>
+                            <button className="uk-button uk-button-default">좋아요</button>
                         </div>
                     </div>
                 </div>
 
-            </div>
-          </section>
+                <div className="project-details-desc">
+                    <div className="uk-section-title section-title">
+                        <h3>줄거리</h3>
+                        <div className="bar"></div>
+                    </div>    
+                    <p>{result.overview}</p>
+                </div>
 
+            </div>
+      </section>
+    
+      <DetailCasts />
+      <DetailPhotos />
+      {/* <DetailVideos /> */}
+      <DetailSimilars />
     </div>
   );
 };

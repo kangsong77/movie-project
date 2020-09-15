@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
-import '../../assets/css/mystyle.css';
+import 'assets/css/mystyle.css';
 
 const LatestNewsItem = ({ movie }) => {
   return (
     <div className='single-blog-post'>
       <div className='blog-post-image'>
-        <Link to='#'>
+        <Link to={`/detail/${movie.id}`}>
           <img src={movie.backdropPath} alt={movie.title} />
         </Link>
       </div>
@@ -23,9 +23,9 @@ const LatestNewsItem = ({ movie }) => {
           starSpacing='2px'
         />
         <h3>
-          <Link to='/blog-details'>{movie.title}</Link>
+          <Link to={`/detail/${movie.id}`}>{movie.title}</Link>
         </h3>
-        <Link to='#' className='read-more'>
+        <Link to={`/detail/${movie.id}`}  className='read-more'>
           상세 보기
         </Link>
       </div>

@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Pages/Login';
 import Home from './components/Pages/Home';
-import Detail from './components/Pages/Detail';
+import DetailMain from './components/Pages/DetailMain';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path="/detail/:id"
             render={({ match }) => (
-              <Detail key={match.params.id} match={match} />
+              <DetailMain key={match.params.id} match={match} />
             )}
           />
         </Switch>

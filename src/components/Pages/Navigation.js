@@ -10,7 +10,6 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import logo from '../../assets/images/logo2.png';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../Login/LogoutButton';
-import { useSelector } from 'react-redux';
 
 //ksong 0803 함수형 변환
 const Navigation = () => {

@@ -9,7 +9,7 @@ import useComponentWillMount from 'hooks/useComponentWillMount';
 import Preloader from 'components/Common/Preloader';
 import DetailPage from 'components/Detail/DetailPage';
 
-const Detail = ({ match }) => {
+const DetailMain = ({ match }) => {
   const loadingState = useSelector(state => state.loading);
   const dispatch = useDispatch();
   const { id } = match.params;
@@ -21,15 +21,13 @@ const Detail = ({ match }) => {
   return (
     <React.Fragment>
       <Navigation />
-      <main>
         {!isLoading ? <DetailPage /> : <Preloader />}
-      </main>
       <Footer />
     </React.Fragment>
   );
 };
 
-Detail.propTypes = {
+DetailMain.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -37,4 +35,4 @@ Detail.propTypes = {
   }).isRequired,
 };
 
-export default Detail;
+export default DetailMain;

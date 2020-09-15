@@ -6,5 +6,6 @@ import search from './search';
 import intro from './intro';
 
 export default function* rootSaga() {
-  yield all([call(intro), call(around), call(detail), call(search)]);
+  // yield all([call(intro), call(around), call(detail), call(search)]);
+  yield all([call(intro), call(around), call(detail)]);
 }

@@ -41,7 +41,7 @@ function HomeIntro() {
                   </div>   
                   <div className="item">   
                     <div className="main-banner-content">
-                          <Link to='#'>
+                          <Link to={`/detail/${result.id}`}>
                             <img src={result.backdropPath} alt={result.title} />
                           </Link>
                     </div>  

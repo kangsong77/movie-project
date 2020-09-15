@@ -6,6 +6,7 @@ import { aroundActions } from 'store/modules/around';
 import { AROUND_POPULAR } from 'utils/constants';
 import useComponentWillMount from 'hooks/useComponentWillMount';
 import LatestNewsItem from './LatestNewsItem';
+import Preloader from 'components/Common/Preloader';
 
 const options = {
   loop: true,
@@ -51,9 +52,6 @@ function LatestNews() {
           <h2>Now Playing</h2>
           <div className='bar'></div>
 
-          <Link to='#' className='uk-button uk-button-default'>
-            View All
-          </Link>
         </div>
 
         <OwlCarousel
@@ -67,7 +65,7 @@ function LatestNews() {
       </div>
     </section>
   ) : (
-    <div>로딩중...</div>
+    <Preloader />
   );
 }
 
