@@ -8,7 +8,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 const LoginForm = () => {
   const inputE1 = useRef(null);
 
-  const isLogin = useSelector((state) => state.Account.loading);
+  const isLogin = false; // 일단 막아둠
   const [email, setEmail] = useState('');
   const [userPwd, setUserPwd] = useState('');
 
@@ -49,7 +49,6 @@ const LoginForm = () => {
 
   return (
     <>
-    
       <section id='login' className='contact-area uk-contact uk-section'>
         <div className='uk-container'>
           <div className='uk-section-title section-title'>
