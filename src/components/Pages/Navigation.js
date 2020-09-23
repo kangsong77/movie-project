@@ -10,12 +10,12 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import logo from '../../assets/images/logo2.png';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../Login/LogoutButton';
-
+import { getUserToken, isUserAuthenticated } from 'utils/authUtils';
 //ksong 0803 함수형 변환
 const Navigation = () => {
   //ksong 0803 로그인 정보를 리덕스에서 불러옴
   // const isLogin = useSelector((state) => state.Account.loading);
-  const isLogin = false;
+  const isLogin = isUserAuthenticated();
 
   return (
     <React.Fragment>
@@ -53,13 +53,22 @@ const Navigation = () => {
                 </AnchorLink>
               </li>
               <li>
-                <AnchorLink offset={() => 100} href='#blog'>
-                  Blog
-                </AnchorLink>
+                <Link to='/comment'>Comment</Link>
               </li>
-              <li>
-                 {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
-              </li>
+              {isLogin ? (
+                <>
+                  <li>
+                    <Link to='#'>MyMovieList</Link>
+                  </li>
+                  <li>
+                    <LogoutButton />
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <Link to='/login'>LogIn</Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>
@@ -101,24 +110,32 @@ const Navigation = () => {
                     </AnchorLink>
                   </li>
                   <li>
-                <AnchorLink offset={() => 100} href='#nowplaying'>
-                  NowPlaying
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink offset={() => 100} href='#weeklyrank'>
-                  WeeklyRank
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink offset={() => 100} href='#blog'>
-                  Blog
-                </AnchorLink>
-              </li>
-              <li>
-                 {isLogin ? <LogoutButton /> : <Link to='/login'>LogIn</Link>}
-              </li>
-                  
+                    <AnchorLink offset={() => 100} href='#nowplaying'>
+                      NowPlaying
+                    </AnchorLink>
+                  </li>
+                  <li>
+                    <AnchorLink offset={() => 100} href='#weeklyrank'>
+                      WeeklyRank
+                    </AnchorLink>
+                  </li>
+                  <li>
+                    <Link to='/comment'>Comment</Link>
+                  </li>
+                  {isLogin ? (
+                    <>
+                      <li>
+                        <Link to='#'>MyMovieList</Link>
+                      </li>
+                      <li>
+                        <LogoutButton />
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <Link to='/login'>LogIn</Link>
+                    </li>
+                  )}
                 </ul>
               </nav>
 
