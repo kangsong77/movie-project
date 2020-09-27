@@ -8,35 +8,30 @@ const initialState = {
   detailSuccess: false,
   detailError: '',
   result: {
+    id: '',
     title: '',
-    originalTitle: '',
     tagline: '',
+    releaseYear: '',
     releaseDate: '',
     runtime: 0,
     rating: 0.0,
-    genres: [],
+    genres: '',
     overview: '',
     posterPath: '',
     backdropPath: '',
     images: [],
-    videos: [
+    simula: [
       {
-        path: '',
-        thumbnail: '',
-      },
-    ],
-    simliars: [
-      {
-        id: '',
+        simula_id: '',
         title: '',
-        posterPath: '',
+        backdrop_path: '',
       },
     ],
     casts: [
       {
-        name: '',
-        role: '',
-        profilePath: '',
+        cast_name: '',
+        cast_role: '',
+        cast_image: '',
       },
     ],
   },
@@ -47,19 +42,19 @@ const reducer = handleActions(
     [detailActions.REQUEST]: (state, _action) => state,
 
     [detailActions.SUCCESS]: (state, action) => {
-      return produce(state, draft => {
+      return produce(state, (draft) => {
         draft.detailSuccess = true;
         draft.result = action.payload.result;
       });
     },
 
     [detailActions.FAILURE]: (state, action) => {
-      return produce(state, draft => {
+      return produce(state, (draft) => {
         draft.detailError = action.payload.error;
       });
     },
   },
-  initialState,
+  initialState
 );
 
 export default reducer;

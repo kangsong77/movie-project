@@ -1,3 +1,7 @@
+export const SERVER_URL = 'http://localhost:8000/';
+export const AROUND_NOW = 'AROUND_NOW';
+export const AROUND_INTRO = 'AROUND_INTRO';
+
 export const API_KEY = 'd5e4a2eb5fb264de1583b6945d203546';
 export const BASE_URL = 'https://api.themoviedb.org/3/';
 // https://image.tmdb.org/t/p/original
@@ -9,7 +13,7 @@ export const imagePath = {
   empty: 'https://ssl.pstatic.net/static/movie/2012/06/dft_img77x96_1.png',
 };
 export const YOUTUBE_PATH = 'https://www.youtube.com/watch?v=';
-export const getYoutubeThumbnail = key =>
+export const getYoutubeThumbnail = (key) =>
   `http://i.ytimg.com/vi/${key}/sddefault.jpg`;
 
 export const AROUND_NOW_PLAYING = 'AROUND_NOW_PLAYING';
@@ -20,6 +24,8 @@ export const AROUND_UPCOMING = 'AROUND_UPCOMING';
 export const korean = 'language=ko-KR';
 
 export const aroundQueries = {
+  [AROUND_NOW]: 'api/movie/now/',
+  [AROUND_INTRO]: 'api/movie/intro/',
   [AROUND_NOW_PLAYING]: 'movie/now_playing',
   [AROUND_POPULAR]: 'movie/popular',
   [AROUND_TOP_RATED]: 'movie/top_rated',

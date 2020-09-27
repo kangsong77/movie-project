@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel3';
 import { useSelector, useDispatch } from 'react-redux';
 import { aroundActions } from 'store/modules/around';
-import { AROUND_POPULAR } from 'utils/constants';
+import { AROUND_NOW} from 'utils/constants';
 import useComponentWillMount from 'hooks/useComponentWillMount';
 import LatestNewsItem from './LatestNewsItem';
 import Preloader from 'components/Common/Preloader';
@@ -41,7 +41,7 @@ function LatestNews() {
   const dispatch = useDispatch();
 
   useComponentWillMount(() => {
-    dispatch(aroundActions.request({ TYPE: AROUND_POPULAR }));
+    dispatch(aroundActions.request({ TYPE: AROUND_NOW }));
   });
 
   return !isLoading ? (

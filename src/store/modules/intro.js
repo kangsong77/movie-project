@@ -11,7 +11,7 @@ const initialState = {
     id: '',
     backdropPath: '',
     title: '',
-    tagline: '',
+    overview: '',
   },
 };
 

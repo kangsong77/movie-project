@@ -12,50 +12,52 @@ const options = {
   autoplayHoverPause: true,
   autoplay: true,
   responsive: {
-      0: {
-          items: 1
-      },
-      576: {
-          items: 2
-      },
-      786: {
-          items: 2
-      },
-      1200: {
-          items: 4
-      }
-  }
-}
+    0: {
+      items: 1,
+    },
+    576: {
+      items: 2,
+    },
+    786: {
+      items: 2,
+    },
+    1200: {
+      items: 4,
+    },
+  },
+};
 
 const DetailSimilars = () => {
-  const { result } = useSelector(state => state.detail);
+  const { result } = useSelector((state) => state.detail);
 
   return (
-    <section id="team" className="project-details-area uk-project-details uk-section">
-      <div className="uk-container">
-          <div className="uk-section-title section-title">
-              <h3>이런 영화는 어때요? </h3>
-              <div className="bar"></div>
-          </div>
+    <section
+      id='team'
+      className='project-details-area uk-project-details uk-section'
+    >
+      <div className='uk-container'>
+        <div className='uk-section-title section-title'>
+          <h3>이런 영화는 어때요? </h3>
+          <div className='bar'></div>
+        </div>
       </div>
-      <div className="uk-container">
-      <OwlCarousel 
-                    className="project-slides owl-carousel owl-theme"
-                    {...options}
-                >
-                    { result.similars && result.similars.map(similar=>(
-                        <div className="single-project" key={similar.id}>
-                            <Link to={`/detail/${similar.id}`} className="project-img">
-                              <img src={similar.posterPath} alt="Project" />
-                              <h4>{similar.title}</h4>
-                            </Link>
-                        </div>
-                     ))}
-        
-      </OwlCarousel>
+      <div className='uk-container'>
+        <OwlCarousel
+          className='project-slides owl-carousel owl-theme'
+          {...options}
+        >
+          {result.simula &&
+            result.simula.map((movie) => (
+              <div className='single-project' key={movie.simula_id}>
+                <Link to={`/detail/${movie.simula_id}`} className='project-img'>
+                  <img src={movie.backdrop_path} alt='Project' />
+                  <h4>{movie.title}</h4>
+                </Link>
+              </div>
+            ))}
+        </OwlCarousel>
       </div>
-  </section>
-
+    </section>
   );
 };
 

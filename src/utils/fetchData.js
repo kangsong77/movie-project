@@ -3,7 +3,7 @@ import { BASE_URL, API_KEY } from './constants';
 
 const getQuery = (path, queries = []) => {
   let url = `${BASE_URL}${path}?api_key=${API_KEY}`;
-  queries.forEach(query => {
+  queries.forEach((query) => {
     url += `&${query}`;
   });
   return url;

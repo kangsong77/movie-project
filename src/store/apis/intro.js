@@ -1,29 +1,17 @@
-import { imagePath, korean } from 'utils/constants';
-import fetchData from 'utils/fetchData';
+import { AROUND_INTRO, aroundQueries } from 'utils/constants';
+import getData from 'utils/getData';
 
 export default async function introAPI() {
   const randomMovie = {};
-  let trendingList = await fetchData('trending/movie/week');
-  trendingList = trendingList.results;
-  let randomMovieID =
-    trendingList[Math.floor(Math.random() * trendingList.length)].id;
-  
-  while (
-    !randomMovie.backdropPath ||
-    !randomMovie.title ||
-    !randomMovie.tagline ||
-    !randomMovie.overview 
-  ) {
-    randomMovieID =
-      trendingList[Math.floor(Math.random() * trendingList.length)].id;
-    // eslint-disable-next-line no-await-in-loop
-    const result = await fetchData(`movie/${randomMovieID}`, [korean]);
-    randomMovie.backdropPath = `${imagePath.original}${result.backdrop_path}`;
-    randomMovie.title = result.title;
-    randomMovie.tagline = result.tagline;
-    randomMovie.id = result.id;
-    randomMovie.overview = result.overview;
-  }
+  const movieList = await getData(aroundQueries[AROUND_INTRO]);
 
+  movieList.forEach((movie) => {
+    if (movie.tm_id && movie.backdrop_path && movie.title && movie.overview) {
+      randomMovie.id = movie.tm_id;
+      randomMovie.title = movie.title;
+      randomMovie.backdropPath = movie.backdrop_path;
+      randomMovie.overview = movie.overview;
+    }
+  });
   return randomMovie;
 }
