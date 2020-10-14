@@ -8,9 +8,7 @@ const Login = () => {
   return (
     <React.Fragment>
       <Navigation />
-
       <LoginForm />
-      <RegistForm />
       <Footer />
     </React.Fragment>
   );

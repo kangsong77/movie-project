@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { logoutUser } from '../../redux/account/actions';
-import { setCookieExpire } from 'utils/authUtils';
 
 import { Button } from '@material-ui/core';
 import { ThemeProvider } from "@material-ui/styles";
@@ -13,15 +12,14 @@ const theme = createMuiTheme({
   },
 });
 
-function LogoutButton() {
+function LoginButton({ history }) {
   // const dispatch = useDispatch();
   // const onLogout = useCallback(() => dispatch(logoutUser()), [dispatch]);
 
   const handleClick = () => {
     // onLogout();
-    //history.push('/');
-    setCookieExpire();
-    window.location = '/';
+    history.push('/login');
+    
   };
   return (
     <ThemeProvider theme={theme}>
@@ -30,10 +28,10 @@ function LogoutButton() {
         variant="outlined" 
         color="primary"
       >
-        Logout
+        Login
       </Button>
     </ThemeProvider>
   );
 }
 
-export default withRouter(LogoutButton);
+export default withRouter(LoginButton);

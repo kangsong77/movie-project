@@ -1,92 +1,106 @@
-import React from 'react';
-//import React, { useState, useRef, useCallback } from 'react';
-//import { useSelector, useDispatch } from 'react-redux';
-//import { changeInput, insertUser, initUser } from '../../redux/account/actions';
+import React, { useState, useRef } from 'react';
+import {useHistory} from 'react-router-dom';
+import 'assets/css/mystyle.css';
+import axios from 'axios';
+import {SERVER_URL} from 'utils/constants';
 
 const RegistForm = () => {
-  /* const inputE1 = useRef(null);
+  const refID = useRef();
+  const refPwd = useRef();
   const [pwdConfirm, setPwdConfirm] = useState('');
+  const [member, setMember] = useState({ userID: '', userPwd: '' });
 
-  const user = useSelector((state) => state.Account.user);
-  const dispatch = useDispatch();
-  const onChangeInput = useCallback((input) => dispatch(changeInput(input)), [
-    dispatch,
-  ]);
-  const onInsertUser = useCallback(() => dispatch(insertUser()), [dispatch]);
-  const onInitUser = useCallback((user) => dispatch(initUser(user)), [
-    dispatch,
-  ]);
+  const history = useHistory();
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const onChangePwdConfirm = (e) => {
     setPwdConfirm(e.target.value);
   };
 
   const onChange = (e) => {
-    onChangeInput(e.target);
+    setMember({ ...member, [e.target.name]: e.target.value });
   };
 
-  const onSubmitHandler = () => {
-    if (user.email === '') {
-      alert('이메일을 입력해주세요.');
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    if (member.userID === '') {
+      alert('ID를 입력해 주세요.');
+      refID.current.focus();
       return false;
     }
-    if (user.userPwd.length < 5) {
+    if (member.userPwd.length < 5) {
       alert('비밀번호는 5자이상입니다.');
-      user.userPwd = '';
+      member.userPwd = '';
       setPwdConfirm('');
+      refPwd.current.focus();
       return false;
     }
 
-    if (user.userPwd !== pwdConfirm) {
+    if (member.userPwd !== pwdConfirm) {
       alert('비밀번호가 일치하지 않습니다.');
-      user.userPwd = '';
+      member.userPwd = '';
       setPwdConfirm('');
+      refPwd.current.focus();
       return false;
     }
 
-    onInsertUser();
+    // async function fn() {
+    //   setFieldErrors({});
+    //   const data = {username:member.userID, password:member.userPwd};
+    //   //'http://localhost:8000/api/get_token/';
+    //   const path = 'accounts/get_token/';
+    //   const apiUrl = `${SERVER_URL}${path}` ;
+    //   try {
 
-    debugger;
-    console.log('----');
+    //     const response = await axiosInstance.post()
+    //   } catch (error) {
 
-    onInitUser();
+    //   }
+    // }
+    // fn();
+
+    const path = 'accounts/signup/';
+    const apiUrl = `${SERVER_URL}${path}` ;
+    const data = {username:member.userID, password:member.userPwd};
+    axios
+      .post(apiUrl, data)
+      .then((response) => {
+        alert('회원가입 성공\n 로그인페이지로 이동합니다.');
+        history.push('/login');
+        // window.location = '/';
+      })
+      .catch((error) => {
+        console.error(error);
+        if(error.response){
+          alert('회원가입실패!! 아이디/암호를 확인해 주세요');
+        }
+      });
+
   };
- */
+ 
   return (
-    <section id='register' className='contact-area uk-contact uk-section'>
+    <section id='register' className='contact-area uk-contact uk-section uk-child-width-1-3'>
       <div className='uk-container'>
         <div className='uk-section-title section-title'>
-          <span>Complete Themes</span>
           <h2>Sign Up</h2>
         </div>
-        {/* 
+       
         <form onSubmit={onSubmitHandler}>
-          <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s  uk-flex-center'>
-            <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-2@s '>
-              <div className='item uk-margin'>
-                <label>Name *</label>
+        <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s uk-flex-center'>
+           
+
+              <div className='item '>
+                <label>ID *</label>
 
                 <input
                   type='text'
                   className='uk-input'
-                  name='userName'
-                  value={user.name}
-                  placeholder='이름을 입력하세요'
+                  name='userID'
+                  value={member.userID}
+                  placeholder='ID를 입력해주세요'
                   onChange={onChange}
-                  ref={inputE1}
-                />
-              </div>
-
-              <div className='item uk-margin'>
-                <label>Email *</label>
-
-                <input
-                  type='text'
-                  className='uk-input'
-                  name='email'
-                  value={user.email}
-                  placeholder='이메일을 입력하세요'
-                  onChange={onChange}
+                  ref={refID}
                 />
               </div>
 
@@ -97,9 +111,10 @@ const RegistForm = () => {
                   type='password'
                   className='uk-input'
                   name='userPwd'
-                  value={user.userPwd}
+                  value={member.userPwd}
                   placeholder='비밀번호를 입력해주세요'
                   onChange={onChange}
+                  ref={refPwd}
                 />
               </div>
 
@@ -110,12 +125,12 @@ const RegistForm = () => {
                   type='password'
                   className='uk-input'
                   value={pwdConfirm}
-                  placeholder='비밀번호를 다시한번 입력하세요'
+                  placeholder='비밀번호를 다시한번 입력해주세요'
                   onChange={onChangePwdConfirm}
                 />
               </div>
 
-              <div className='item uk-margin'>
+              <div className='item' >
                 <button
                   type='submit'
                   className='uk-button uk-button-default uk-flex-center'
@@ -124,9 +139,8 @@ const RegistForm = () => {
                 </button>
               </div>
             </div>
-          </div>
         </form>
-  */}
+ 
       </div>
     </section>
   );

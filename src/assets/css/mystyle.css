@@ -21,3 +21,18 @@
   padding-bottom: 0;
   
 }
+
+#weeklyrank {
+  padding-top: 100px;
+}
+
+#login {
+  display: flex;
+  justify-content:center;
+  padding-top: 100px;
+}
+#register {
+  display: flex;
+  justify-content:center;
+  padding-top: 100px;
+}

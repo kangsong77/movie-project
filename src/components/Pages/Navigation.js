@@ -10,6 +10,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import logo from '../../assets/images/logo2.png';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../Login/LogoutButton';
+import LoginButton from '../Login/LoginButton';
 import { getUserToken, isUserAuthenticated } from 'utils/authUtils';
 //ksong 0803 함수형 변환
 const Navigation = () => {
@@ -37,38 +38,29 @@ const Navigation = () => {
             data-uk-scrollspy-nav='offset: 0; closest: li; scroll: true'
           >
             <ul className='uk-navbar-nav'>
-              <li className='uk-active'>
-                <AnchorLink offset={() => 100} href='#home'>
-                  Home
-                </AnchorLink>
-              </li>
               <li>
-                <AnchorLink offset={() => 100} href='#nowplaying'>
-                  NowPlaying
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink offset={() => 100} href='#weeklyrank'>
-                  WeeklyRank
-                </AnchorLink>
-              </li>
-              <li>
-                <Link to='/comment'>Comment</Link>
-              </li>
-              {isLogin ? (
-                <>
-                  <li>
-                    <Link to='#'>MyMovieList</Link>
+                    <Link to= '/'>Home</Link>
                   </li>
                   <li>
-                    <LogoutButton />
+                    <Link to= '/nowplaying'>NowPlaying</Link>
                   </li>
-                </>
-              ) : (
-                <li>
-                  <Link to='/login'>LogIn</Link>
-                </li>
-              )}
+                  <li>
+                    <Link to= '/weeklyrank'>WeeklyRank</Link>
+                  </li>
+                  {isLogin ? (
+                    <>
+                      <li>
+                        <Link to='#'>MyMovieList</Link>
+                      </li>
+                      <li>
+                        <LogoutButton />
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <LoginButton />
+                    </li>
+                  )}
             </ul>
           </nav>
         </div>
@@ -105,22 +97,13 @@ const Navigation = () => {
               >
                 <ul className='uk-navbar-nav'>
                   <li>
-                    <AnchorLink href='#home' offset={() => 100}>
-                      Home
-                    </AnchorLink>
+                    <Link to= '/'>Home</Link>
                   </li>
                   <li>
-                    <AnchorLink offset={() => 100} href='#nowplaying'>
-                      NowPlaying
-                    </AnchorLink>
+                    <Link to= '/nowplaying'>NowPlaying</Link>
                   </li>
                   <li>
-                    <AnchorLink offset={() => 100} href='#weeklyrank'>
-                      WeeklyRank
-                    </AnchorLink>
-                  </li>
-                  <li>
-                    <Link to='/comment'>Comment</Link>
+                    <Link to= '/weeklyrank'>WeeklyRank</Link>
                   </li>
                   {isLogin ? (
                     <>
@@ -133,22 +116,12 @@ const Navigation = () => {
                     </>
                   ) : (
                     <li>
-                      <Link to='/login'>LogIn</Link>
+                      <LoginButton />
                     </li>
                   )}
                 </ul>
               </nav>
 
-              <div className='lang'>
-                <form>
-                  <div>
-                    <select>
-                      <option value='eng'>En</option>
-                      <option value='ge'>Ge</option>
-                    </select>
-                  </div>
-                </form>
-              </div>
             </div>
           </div>
         </div>

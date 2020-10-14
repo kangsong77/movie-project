@@ -49,7 +49,8 @@ const DetailSimilars = () => {
           {result.simula &&
             result.simula.map((movie) => (
               <div className='single-project' key={movie.simula_id}>
-                <Link to={`/detail/${movie.simula_id}`} className='project-img'>
+                {/* <Link to={`/detail/${movie.simula_id}`} className='project-img'> */}
+                <Link to= '#' className='project-img'> 
                   <img src={movie.backdrop_path} alt='Project' />
                   <h4>{movie.title}</h4>
                 </Link>

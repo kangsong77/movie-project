@@ -1,8 +1,6 @@
 import {
   korean,
   imagePath,
-  YOUTUBE_PATH,
-  getYoutubeThumbnail,
 } from 'utils/constants';
 import fetchData from 'utils/fetchData';
 import getData from 'utils/getData';

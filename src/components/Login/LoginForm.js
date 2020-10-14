@@ -1,17 +1,15 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/account/actions';
-import { Redirect } from 'react-router-dom';
-//import { Account } from '../../redux/account/reducers';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import React, { useState, useRef } from 'react';
+import { Redirect,Link } from 'react-router-dom';
 
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
+import 'assets/css/mystyle.css';
+import {SERVER_URL} from 'utils/constants';
 
 const LoginForm = () => {
-  const refID = useRef(null);
-  const refPWD = useRef(null);
+  const refID = useRef();
+  const refPWD = useRef();
   const [member, setMember] = useState({ username: '', password: '' });
   const location = useLocation();
   const history = useHistory();
@@ -30,16 +28,17 @@ const LoginForm = () => {
     e.preventDefault();
     if (member.username.length == 0) {
       alert('아이디를 입력해주세요');
-      refID.current.fous();
+      refID.current.focus();
       return false;
     }
     if (member.password.length == 0) {
       alert('비밀번호를 입력해주세요');
-      refPWD.current.fous();
+      refPWD.current.focus();
       return false;
     }
-
-    const apiUrl = 'http://localhost:8000/api/get_token/';
+    //'http://localhost:8000/api/get_token/';
+    const path = 'api/get_token/';
+    const apiUrl = `${SERVER_URL}${path}` ;
 
     axios
       .post(apiUrl, member)
@@ -64,12 +63,12 @@ const LoginForm = () => {
   if (isLogin) return <Redirect to={from} />;
 
   return (
-    <>
-      <section id='login' className='contact-area uk-contact uk-section'>
+    <>  
+      <section id='login' className='contact-area uk-contact uk-section uk-child-width-1-3'>
         <div className='uk-container'>
-          <div className='uk-section-title section-title'>
+           <div className='uk-section-title section-title'>
             <h2>Sign In</h2>
-          </div>
+         </div>
 
           <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s uk-flex-center'>
             <div className='item'>
@@ -105,9 +104,9 @@ const LoginForm = () => {
                 <div className='uk-grid uk-grid-match uk-grid-small uk-child-width-1-2@s '>
                   <div className='item uk-margin'>
                     <span className=' uk-button-link uk-text-justify'>
-                      <AnchorLink href='#register' offset={() => 40}>
+                      <Link to='/Regist'>
                         Sign Up(회원가입)
-                      </AnchorLink>
+                      </Link>
                     </span>
                   </div>
                   <div className='item uk-margin'>

@@ -34,7 +34,7 @@ const options = {
 
 //class LatestNews extends React.Component {
 //    render(){
-function LatestNews() {
+const LatestNews = ()=> {
   const { aroundSuccess, result } = useSelector((state) => state.around);
   const loadingState = useSelector((state) => state.loading);
   const isLoading = loadingState[aroundActions.TYPE];
