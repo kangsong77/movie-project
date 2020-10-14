@@ -1,15 +1,20 @@
 import React, { useState, useRef } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import 'assets/css/mystyle.css';
 import axios from 'axios';
-import {SERVER_URL} from 'utils/constants';
+import { SERVER_URL } from 'utils/constants';
 
 const RegistForm = () => {
-  const refID = useRef();
+  const refEmail = useRef();
+  const refName = useRef();
   const refPwd = useRef();
-  const [pwdConfirm, setPwdConfirm] = useState('');
-  const [member, setMember] = useState({ userID: '', userPwd: '' });
 
+  const [pwdConfirm, setPwdConfirm] = useState('');
+  const [member, setMember] = useState({
+    email: '',
+    fullname: '',
+    password: '',
+  });
   const history = useHistory();
   const [fieldErrors, setFieldErrors] = useState({});
 
@@ -24,45 +29,40 @@ const RegistForm = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (member.userID === '') {
+    if (member.email === '') {
       alert('ID를 입력해 주세요.');
-      refID.current.focus();
+      refEmail.current.focus();
       return false;
     }
-    if (member.userPwd.length < 5) {
+    if (member.fullname === '') {
+      alert('이름을 입력해 주세요.');
+      refName.current.focus();
+      return false;
+    }
+    if (member.password.length < 5) {
       alert('비밀번호는 5자이상입니다.');
-      member.userPwd = '';
+      member.password = '';
       setPwdConfirm('');
       refPwd.current.focus();
       return false;
     }
 
-    if (member.userPwd !== pwdConfirm) {
+    if (member.password !== pwdConfirm) {
       alert('비밀번호가 일치하지 않습니다.');
-      member.userPwd = '';
+      member.password = '';
       setPwdConfirm('');
       refPwd.current.focus();
       return false;
     }
-
-    // async function fn() {
-    //   setFieldErrors({});
-    //   const data = {username:member.userID, password:member.userPwd};
-    //   //'http://localhost:8000/api/get_token/';
-    //   const path = 'accounts/get_token/';
-    //   const apiUrl = `${SERVER_URL}${path}` ;
-    //   try {
-
-    //     const response = await axiosInstance.post()
-    //   } catch (error) {
-
-    //   }
-    // }
-    // fn();
 
     const path = 'accounts/signup/';
-    const apiUrl = `${SERVER_URL}${path}` ;
-    const data = {username:member.userID, password:member.userPwd};
+    const apiUrl = `${SERVER_URL}${path}`;
+    const data = {
+      email: member.email,
+      username: member.fullname,
+      password: member.password,
+    };
+    debugger;
     axios
       .post(apiUrl, data)
       .then((response) => {
@@ -72,75 +72,87 @@ const RegistForm = () => {
       })
       .catch((error) => {
         console.error(error);
-        if(error.response){
+        debugger;
+        if (error.response) {
           alert('회원가입실패!! 아이디/암호를 확인해 주세요');
         }
       });
-
   };
- 
+
   return (
-    <section id='register' className='contact-area uk-contact uk-section uk-child-width-1-3'>
+    <section
+      id='register'
+      className='contact-area uk-contact uk-section uk-child-width-1-3'
+    >
       <div className='uk-container'>
         <div className='uk-section-title section-title'>
           <h2>Sign Up</h2>
         </div>
-       
+
         <form onSubmit={onSubmitHandler}>
-        <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s uk-flex-center'>
-           
+          <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s uk-flex-center'>
+            <div className='item '>
+              <label>E-mail *</label>
 
-              <div className='item '>
-                <label>ID *</label>
-
-                <input
-                  type='text'
-                  className='uk-input'
-                  name='userID'
-                  value={member.userID}
-                  placeholder='ID를 입력해주세요'
-                  onChange={onChange}
-                  ref={refID}
-                />
-              </div>
-
-              <div className='item uk-margin'>
-                <label>Password *</label>
-
-                <input
-                  type='password'
-                  className='uk-input'
-                  name='userPwd'
-                  value={member.userPwd}
-                  placeholder='비밀번호를 입력해주세요'
-                  onChange={onChange}
-                  ref={refPwd}
-                />
-              </div>
-
-              <div className='item uk-margin'>
-                <label>Confirm Password *</label>
-
-                <input
-                  type='password'
-                  className='uk-input'
-                  value={pwdConfirm}
-                  placeholder='비밀번호를 다시한번 입력해주세요'
-                  onChange={onChangePwdConfirm}
-                />
-              </div>
-
-              <div className='item' >
-                <button
-                  type='submit'
-                  className='uk-button uk-button-default uk-flex-center'
-                >
-                  Create Account
-                </button>
-              </div>
+              <input
+                type='text'
+                className='uk-input'
+                name='email'
+                value={member.email}
+                placeholder='이메일을 입력해주세요'
+                onChange={onChange}
+                ref={refEmail}
+              />
             </div>
+            <div className='item uk-margin'>
+              <label>Name *</label>
+
+              <input
+                type='text'
+                className='uk-input'
+                name='fullname'
+                value={member.fullname}
+                placeholder='이름을 입력해주세요'
+                onChange={onChange}
+                ref={refName}
+              />
+            </div>
+            <div className='item uk-margin'>
+              <label>Password *</label>
+
+              <input
+                type='password'
+                className='uk-input'
+                name='password'
+                value={member.password}
+                placeholder='비밀번호를 입력해주세요'
+                onChange={onChange}
+                ref={refPwd}
+              />
+            </div>
+
+            <div className='item uk-margin'>
+              <label>Confirm Password *</label>
+
+              <input
+                type='password'
+                className='uk-input'
+                value={pwdConfirm}
+                placeholder='비밀번호를 다시한번 입력해주세요'
+                onChange={onChangePwdConfirm}
+              />
+            </div>
+
+            <div className='item'>
+              <button
+                type='submit'
+                className='uk-button uk-button-default uk-flex-center'
+              >
+                Create Account
+              </button>
+            </div>
+          </div>
         </form>
- 
       </div>
     </section>
   );

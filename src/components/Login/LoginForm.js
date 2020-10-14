@@ -1,20 +1,18 @@
 import React, { useState, useRef } from 'react';
-import { Redirect,Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import 'assets/css/mystyle.css';
-import {SERVER_URL} from 'utils/constants';
+import { SERVER_URL } from 'utils/constants';
 
 const LoginForm = () => {
   const refID = useRef();
   const refPWD = useRef();
-  const [member, setMember] = useState({ username: '', password: '' });
+  const [member, setMember] = useState({ email: '', password: '' });
   const location = useLocation();
   const history = useHistory();
-
-  const isLogin = false; // 일단 막아둠
 
   const { from: loginRedirectUrl } = location.state || {
     from: { pathname: '/' },
@@ -26,8 +24,8 @@ const LoginForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (member.username.length == 0) {
-      alert('아이디를 입력해주세요');
+    if (member.email.length == 0) {
+      alert('이메일을 입력해주세요');
       refID.current.focus();
       return false;
     }
@@ -37,8 +35,9 @@ const LoginForm = () => {
       return false;
     }
     //'http://localhost:8000/api/get_token/';
-    const path = 'api/get_token/';
-    const apiUrl = `${SERVER_URL}${path}` ;
+    // const path = 'api/get_token/';
+    const path = 'accounts/login/';
+    const apiUrl = `${SERVER_URL}${path}`;
 
     axios
       .post(apiUrl, member)
@@ -60,29 +59,32 @@ const LoginForm = () => {
   //console.log('LoginForm:  location.state ', location.state);
   //const { from } = location.state || { from: { pathname: '/' } };
   const { from } = { from: { pathname: '/' } };
-  if (isLogin) return <Redirect to={from} />;
+  // if (isLogin) return <Redirect to={from} />;
 
   return (
-    <>  
-      <section id='login' className='contact-area uk-contact uk-section uk-child-width-1-3'>
+    <>
+      <section
+        id='login'
+        className='contact-area uk-contact uk-section uk-child-width-1-3'
+      >
         <div className='uk-container'>
-           <div className='uk-section-title section-title'>
+          <div className='uk-section-title section-title'>
             <h2>Sign In</h2>
-         </div>
+          </div>
 
           <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s uk-flex-center'>
             <div className='item'>
               <form id='contactForm'>
                 <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s'>
                   <div className='item uk-margin'>
-                    <label>ID *</label>
+                    <label>E-mail *</label>
 
                     <input
                       type='text'
-                      name='username'
+                      name='email'
                       className='uk-input'
-                      value={member.username}
-                      placeholder='아이디를 입력해 주세요'
+                      value={member.email}
+                      placeholder='이메일을 입력해 주세요'
                       onChange={onMemberChange}
                       ref={refID}
                     />
@@ -104,9 +106,7 @@ const LoginForm = () => {
                 <div className='uk-grid uk-grid-match uk-grid-small uk-child-width-1-2@s '>
                   <div className='item uk-margin'>
                     <span className=' uk-button-link uk-text-justify'>
-                      <Link to='/Regist'>
-                        Sign Up(회원가입)
-                      </Link>
+                      <Link to='/Regist'>Sign Up(회원가입)</Link>
                     </span>
                   </div>
                   <div className='item uk-margin'>

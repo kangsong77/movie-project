@@ -22,6 +22,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
+    fontFamily: "Poppins",
     fontWeight: 800,
     fontSize: '2rem',
   },
