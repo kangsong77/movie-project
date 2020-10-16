@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter , useHistory} from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { logoutUser } from '../../redux/account/actions';
 import { setCookieExpire } from 'utils/authUtils';
@@ -16,11 +16,11 @@ const theme = createMuiTheme({
 function LogoutButton() {
   // const dispatch = useDispatch();
   // const onLogout = useCallback(() => dispatch(logoutUser()), [dispatch]);
-
+  const history = useHistory();
   const handleClick = () => {
     // onLogout();
-    //history.push('/');
     setCookieExpire();
+    // history.push('/');
     window.location = '/';
   };
   return (

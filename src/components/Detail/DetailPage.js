@@ -3,13 +3,41 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import DetailCasts from './DetailCasts';
 import DetailPhotos from './DetailPhotos';
-import DetailVideos from './DetailVideos';
 import DetailSimilars from './DetailSimilars';
-
+import { SERVER_URL } from 'utils/constants';
 import 'assets/css/mystyle.css';
+import { notLoginRedirect,getUserToken } from 'utils/authUtils';
+import axios from 'axios';
 
 const DetailPage = () => {
   const { result } = useSelector(state => state.detail);
+
+  const onClickFavorite = ()=>{
+    notLoginRedirect();
+
+    const path = 'accounts/favorite/';
+    const apiUrl = `${SERVER_URL}${path}`;
+
+    const data = {
+        id: result.id,
+        title: result.title,
+        image: result.backdropPath,
+    };
+    const jwtToken = getUserToken();
+    const headers = { Authorization: `JWT ${jwtToken}` };
+
+    axios
+      .post(apiUrl, data, {headers})
+      .then((response) => {
+        
+        alert('저장되었습니다.');
+      })
+      .catch((response) => {
+        console.error(response);
+        alert('저장실패!!');
+      });
+  }
+
   return (
     <div>
       <section className="page-title-area uk-page-title" style ={ { backgroundImage: "url("+result.backdropPath+")" }}>
@@ -41,7 +69,7 @@ const DetailPage = () => {
                                 <li>러닝타임 : <span> {result.runtime}</span></li>
                                 <li># : <span> {result.tagline}</span></li>
                             </ul>
-                            <button className="uk-button uk-button-default">좋아요</button>
+                            <button onClick = {onClickFavorite} className="uk-button uk-button-default">좋아요</button>
                         </div>
                     </div>
                 </div>

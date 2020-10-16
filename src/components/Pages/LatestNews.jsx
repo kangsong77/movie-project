@@ -48,10 +48,9 @@ const LatestNews = ()=> {
     <section id='nowplaying' className='blog-area uk-dark uk-blog uk-section'>
       <div className='uk-container'>
         <div className='uk-section-title section-title'>
-          <span>현재 상영중 영화 목록</span>
+          {/* <span>현재 상영중 영화 목록</span> */}
           <h2>Now Playing</h2>
           <div className='bar'></div>
-
         </div>
 
         <OwlCarousel

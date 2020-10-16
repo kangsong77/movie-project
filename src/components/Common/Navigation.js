@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import LogoutButton from '../Login/LogoutButton';
 import LoginButton from '../Login/LoginButton';
 import { getUserToken, isUserAuthenticated } from 'utils/authUtils';
+import 'assets/css/mystyle.css';
 //ksong 0803 함수형 변환
 const Navigation = () => {
   //ksong 0803 로그인 정보를 리덕스에서 불러옴
@@ -47,15 +48,13 @@ const Navigation = () => {
                   <li>
                     <Link to= '/weeklyrank'>WeeklyRank</Link>
                   </li>
+                  <li>
+                    <Link to='/mymovies'>MyMovieList</Link>
+                  </li>
                   {isLogin ? (
-                    <>
-                      <li>
-                        <Link to='#'>MyMovieList</Link>
-                      </li>
-                      <li>
+                    <li>
                         <LogoutButton />
-                      </li>
-                    </>
+                    </li>
                   ) : (
                     <li>
                       <LoginButton />
@@ -105,15 +104,13 @@ const Navigation = () => {
                   <li>
                     <Link to= '/weeklyrank'>WeeklyRank</Link>
                   </li>
+                  <li>
+                    <Link to='/mymovies'>MyMovieList</Link>
+                  </li>
                   {isLogin ? (
-                    <>
-                      <li>
-                        <Link to='#'>MyMovieList</Link>
-                      </li>
-                      <li>
+                    <li>
                         <LogoutButton />
-                      </li>
-                    </>
+                    </li>
                   ) : (
                     <li>
                       <LoginButton />

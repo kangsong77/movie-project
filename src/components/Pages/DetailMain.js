@@ -1,6 +1,4 @@
 import React from 'react';
-import Navigation from './Navigation';
-import Footer from 'components/Common/Footer';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { detailActions } from 'store/modules/detail';
@@ -20,9 +18,7 @@ const DetailMain = ({ match }) => {
 
   return (
     <React.Fragment>
-      <Navigation />
         {!isLoading ? <DetailPage /> : <Preloader />}
-      <Footer />
     </React.Fragment>
   );
 };

@@ -22,16 +22,11 @@
   
 }
 
-#weeklyrank {
+#weeklyrank, #nowplaying, #mymovielist {
   padding-top: 100px;
 }
 
-#login {
-  display: flex;
-  justify-content:center;
-  padding-top: 100px;
-}
-#register {
+#login, #register {
   display: flex;
   justify-content:center;
   padding-top: 100px;

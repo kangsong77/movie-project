@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import 'assets/css/mystyle.css';
 import { SERVER_URL } from 'utils/constants';
+import { isUserAuthenticated } from 'utils/authUtils';
 
 const LoginForm = () => {
   const refID = useRef();
@@ -14,10 +15,11 @@ const LoginForm = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const { from: loginRedirectUrl } = location.state || {
-    from: { pathname: '/' },
-  };
+  
+  
+  const { loginRedirectUrl } = location.state || { loginRedirectUrl: { pathname: "/" } }
 
+  
   const onMemberChange = (e) => {
     setMember({ ...member, [e.target.name]: e.target.value });
   };
@@ -48,18 +50,16 @@ const LoginForm = () => {
         let cookies = new Cookies();
         cookies.set('usertoken', token, { path: '/' });
         alert('인증되었습니다.');
-        history.push(loginRedirectUrl);
-        // window.location = '/';
+        // history.push(loginRedirectUrl);
+        window.location = '/';
+        // return <Redirect to={loginRedirectUrl} />
       })
       .catch((response) => {
         console.error(response);
       });
   };
 
-  //console.log('LoginForm:  location.state ', location.state);
-  //const { from } = location.state || { from: { pathname: '/' } };
-  const { from } = { from: { pathname: '/' } };
-  // if (isLogin) return <Redirect to={from} />;
+  // if (isUserAuthenticated()) return <Redirect to={loginRedirectUrl} />
 
   return (
     <>
