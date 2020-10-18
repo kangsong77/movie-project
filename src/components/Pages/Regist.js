@@ -30,7 +30,7 @@ const Regist = () => {
     e.preventDefault();
 
     if (member.email === '') {
-      alert('ID를 입력해 주세요.');
+      alert('이메일을 입력해 주세요.');
       refEmail.current.focus();
       return false;
     }
@@ -65,13 +65,14 @@ const Regist = () => {
     axios
       .post(apiUrl, data)
       .then((response) => {
+        console.log('호출결과:', response.data);
         alert('회원가입 성공');
         history.push('/login');
         // window.location = '/';
       })
       .catch((error) => {
         console.error(error);
-        
+
         if (error.response) {
           alert('회원가입실패!! 아이디/암호를 확인해 주세요');
         }

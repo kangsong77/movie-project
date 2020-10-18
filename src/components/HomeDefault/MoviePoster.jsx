@@ -22,7 +22,7 @@ const MoviePoster = () => {
     fetchData();
   }, []);
 
-  if (isLoading) return <div>대기중...</div>;
+  if (isLoading) return <div>데이터를 가져오고 있는 중입니다...</div>;
 
   if (!movies) {
     return null;

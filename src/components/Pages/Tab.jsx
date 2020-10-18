@@ -20,12 +20,12 @@ const theme = createMuiTheme({
       // dark: will be calculated from palette.secondary.main,
       //contrastText: '#ffcc00',
     },
-  },
-  typography: {
-    fontFamily: "Poppins",
-    fontWeight: 800,
-    fontSize: '2rem',
-  },
+  // },
+  // typography: {
+  //   fontFamily: "Poppins",
+  //   fontWeight: 800,
+  //   fontSize: '2rem',
+  // },
 
 
 });

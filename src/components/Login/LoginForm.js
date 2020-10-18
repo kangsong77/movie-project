@@ -15,11 +15,10 @@ const LoginForm = () => {
   const location = useLocation();
   const history = useHistory();
 
-  
-  
-  const { loginRedirectUrl } = location.state || { loginRedirectUrl: { pathname: "/" } }
+  const { from: loginRedirectUrl } = location.state || {
+    from: { pathname: '/' },
+  };
 
-  
   const onMemberChange = (e) => {
     setMember({ ...member, [e.target.name]: e.target.value });
   };
@@ -50,8 +49,8 @@ const LoginForm = () => {
         let cookies = new Cookies();
         cookies.set('usertoken', token, { path: '/' });
         alert('인증되었습니다.');
-        // history.push(loginRedirectUrl);
-        window.location = '/';
+        history.push(loginRedirectUrl);
+        // window.location = '/';
         // return <Redirect to={loginRedirectUrl} />
       })
       .catch((response) => {

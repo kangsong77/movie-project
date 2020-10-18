@@ -10,7 +10,7 @@ const MovieComment = () => {
 
   //컴포넌트가 최초 로딩될떄만 실행
   useEffect(() => {
-    const apiUrl = 'http://localhost:8000/api/blog/';
+    const apiUrl = 'http://localhost:8000/blog/';
 
     axios
       .get(apiUrl)

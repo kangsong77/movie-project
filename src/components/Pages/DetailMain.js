@@ -6,19 +6,23 @@ import PropTypes from 'prop-types';
 import useComponentWillMount from 'hooks/useComponentWillMount';
 import Preloader from 'components/Common/Preloader';
 import DetailPage from 'components/Detail/DetailPage';
+import { useEffect } from 'react';
 
 const DetailMain = ({ match }) => {
-  const loadingState = useSelector(state => state.loading);
+  const loadingState = useSelector((state) => state.loading);
   const dispatch = useDispatch();
   const { id } = match.params;
   const isLoading = loadingState[detailActions.TYPE];
-  
 
-  useComponentWillMount(() => dispatch(detailActions.request({ id })));
+  useEffect(() => {
+    dispatch(detailActions.request({ id }));
+  }, []);
+
+  // useComponentWillMount(() => dispatch(detailActions.request({ id })));
 
   return (
     <React.Fragment>
-        {!isLoading ? <DetailPage /> : <Preloader />}
+      {!isLoading ? <DetailPage /> : <Preloader />}
     </React.Fragment>
   );
 };

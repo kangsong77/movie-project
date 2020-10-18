@@ -1,6 +1,9 @@
 export const SERVER_URL = 'http://localhost:8000/';
+// export const SERVER_URL = 'http://20.194.27.176/';
+
 export const AROUND_NOW = 'AROUND_NOW';
 export const AROUND_INTRO = 'AROUND_INTRO';
+export const AROUND_MYMOVIE = 'AROUND_MYMOVIE';
 
 export const API_KEY = 'd5e4a2eb5fb264de1583b6945d203546';
 export const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -24,12 +27,13 @@ export const AROUND_UPCOMING = 'AROUND_UPCOMING';
 export const korean = 'language=ko-KR';
 
 export const aroundQueries = {
-  [AROUND_NOW]: 'api/movie/now/',
-  [AROUND_INTRO]: 'api/movie/intro/',
+  [AROUND_NOW]: 'movie/now/',
+  [AROUND_INTRO]: 'movie/intro/',
   [AROUND_NOW_PLAYING]: 'movie/now_playing',
   [AROUND_POPULAR]: 'movie/popular',
   [AROUND_TOP_RATED]: 'movie/top_rated',
   [AROUND_UPCOMING]: 'movie/upcoming',
+  [AROUND_MYMOVIE]: 'accounts/favorite',
 };
 
 export const aroundList = [

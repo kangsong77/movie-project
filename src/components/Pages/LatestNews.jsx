@@ -7,6 +7,7 @@ import { AROUND_NOW} from 'utils/constants';
 import useComponentWillMount from 'hooks/useComponentWillMount';
 import LatestNewsItem from './LatestNewsItem';
 import Preloader from 'components/Common/Preloader';
+import { useEffect } from 'react';
 
 const options = {
   loop: true,
@@ -40,10 +41,13 @@ const LatestNews = ()=> {
   const isLoading = loadingState[aroundActions.TYPE];
   const dispatch = useDispatch();
 
-  useComponentWillMount(() => {
+  // useComponentWillMount(() => {
+  //   dispatch(aroundActions.request({ TYPE: AROUND_NOW }));
+  // });
+  useEffect(() => {
     dispatch(aroundActions.request({ TYPE: AROUND_NOW }));
-  });
-
+  }, []);
+  
   return !isLoading ? (
     <section id='nowplaying' className='blog-area uk-dark uk-blog uk-section'>
       <div className='uk-container'>

@@ -1,7 +1,4 @@
-import {
-  korean,
-  imagePath,
-} from 'utils/constants';
+import { korean, imagePath } from 'utils/constants';
 import fetchData from 'utils/fetchData';
 import getData from 'utils/getData';
 
@@ -38,7 +35,7 @@ const getMovieSimilars = async (id) => {
 
 export default async function detailAPI(payload) {
   const { id } = payload;
-  const result = await getData(`api/movie/${id}`);
+  const result = await getData(`movie/${id}`);
 
   const gallery = [];
   result.gallery.map((backdrop) => gallery.push(backdrop.backdrop_path));

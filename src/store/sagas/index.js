@@ -4,8 +4,9 @@ import around from './around';
 import detail from './detail';
 import search from './search';
 import intro from './intro';
+import mymovie from './mymovie';
 
 export default function* rootSaga() {
   // yield all([call(intro), call(around), call(detail), call(search)]);
-  yield all([call(intro), call(around), call(detail)]);
+  yield all([call(intro), call(around), call(detail), call(mymovie)]);
 }
