@@ -6,7 +6,7 @@ import DetailPhotos from './DetailPhotos';
 import DetailSimilars from './DetailSimilars';
 import { SERVER_URL } from 'utils/constants';
 import 'assets/css/mystyle.css';
-import { notLoginRedirect, getUserToken } from 'utils/authUtils';
+import { isUserAuthenticated, getUserToken } from 'utils/authUtils';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -15,13 +15,11 @@ const DetailPage = () => {
   const history = useHistory();
 
   const onClickFavorite = () => {
-    const jwtToken = getUserToken();
-
-    if (jwtToken == null) {
+    if (!isUserAuthenticated()) {
       history.push('/login');
       return;
     }
-
+    const jwtToken = getUserToken();
     const path = 'accounts/favorite/';
     const apiUrl = `${SERVER_URL}${path}`;
 

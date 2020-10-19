@@ -7,6 +7,7 @@ import { Cookies } from 'react-cookie';
 import 'assets/css/mystyle.css';
 import { SERVER_URL } from 'utils/constants';
 import { isUserAuthenticated } from 'utils/authUtils';
+import useLocalStorage from 'utils/useLocalStorage';
 
 const LoginForm = () => {
   const refID = useRef();
@@ -14,7 +15,7 @@ const LoginForm = () => {
   const [member, setMember] = useState({ email: '', password: '' });
   const location = useLocation();
   const history = useHistory();
-
+  const [jwtToekn, setjwtToken] = useLocalStorage('usertoken', '');
   const { from: loginRedirectUrl } = location.state || {
     from: { pathname: '/' },
   };
@@ -45,12 +46,13 @@ const LoginForm = () => {
       .then((response) => {
         console.log('호출결과:', response.data);
         const token = response.data.token;
-
-        let cookies = new Cookies();
-        cookies.set('usertoken', token, { path: '/' });
+        setjwtToken(token);
+        // let cookies = new Cookies();
+        // cookies.set('usertoken', token, { path: '/' });
         alert('인증되었습니다.');
-        history.push(loginRedirectUrl);
-        // window.location = '/';
+        // history.push(loginRedirectUrl);
+        // 메뉴 리로딩을 위해 일단 Home 위치로 가기
+        window.location = '/';
         // return <Redirect to={loginRedirectUrl} />
       })
       .catch((response) => {
@@ -62,10 +64,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <section
-        id='login'
-        className='contact-area uk-contact uk-section uk-child-width-1-3'
-      >
+      <section id='login' className='contact-area uk-contact uk-section '>
         <div className='uk-container'>
           <div className='uk-section-title section-title'>
             <h2>Sign In</h2>

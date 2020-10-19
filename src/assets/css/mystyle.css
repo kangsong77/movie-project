@@ -19,15 +19,17 @@
   margin-top: 1.2rem;
   padding-top: 0;
   padding-bottom: 0;
-  
 }
 
-#weeklyrank, #nowplaying, #mymovielist {
+#weeklyrank,
+#nowplaying,
+#mymovielist {
   padding-top: 100px;
 }
 
-#login, #register {
+#login,
+#register {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   padding-top: 100px;
 }

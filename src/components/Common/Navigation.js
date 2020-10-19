@@ -40,26 +40,26 @@ const Navigation = () => {
           >
             <ul className='uk-navbar-nav'>
               <li>
-                    <Link to= '/'>Home</Link>
-                  </li>
-                  <li>
-                    <Link to= '/nowplaying'>NowPlaying</Link>
-                  </li>
-                  <li>
-                    <Link to= '/weeklyrank'>WeeklyRank</Link>
-                  </li>
-                  <li>
-                    <Link to='/mymovies'>MyMovieList</Link>
-                  </li>
-                  {isLogin ? (
-                    <li>
-                        <LogoutButton />
-                    </li>
-                  ) : (
-                    <li>
-                      <LoginButton />
-                    </li>
-                  )}
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/nowplaying'>NowPlaying</Link>
+              </li>
+              <li>
+                <Link to='/weeklyrank'>WeeklyRank</Link>
+              </li>
+              <li>
+                <Link to='/mymovies'>MyMovieList</Link>
+              </li>
+              {isUserAuthenticated() ? (
+                <li>
+                  <LogoutButton />
+                </li>
+              ) : (
+                <li>
+                  <LoginButton />
+                </li>
+              )}
             </ul>
           </nav>
         </div>
@@ -96,20 +96,20 @@ const Navigation = () => {
               >
                 <ul className='uk-navbar-nav'>
                   <li>
-                    <Link to= '/'>Home</Link>
+                    <Link to='/'>Home</Link>
                   </li>
                   <li>
-                    <Link to= '/nowplaying'>NowPlaying</Link>
+                    <Link to='/nowplaying'>NowPlaying</Link>
                   </li>
                   <li>
-                    <Link to= '/weeklyrank'>WeeklyRank</Link>
+                    <Link to='/weeklyrank'>WeeklyRank</Link>
                   </li>
                   <li>
                     <Link to='/mymovies'>MyMovieList</Link>
                   </li>
                   {isLogin ? (
                     <li>
-                        <LogoutButton />
+                      <LogoutButton />
                     </li>
                   ) : (
                     <li>
@@ -118,7 +118,6 @@ const Navigation = () => {
                   )}
                 </ul>
               </nav>
-
             </div>
           </div>
         </div>
