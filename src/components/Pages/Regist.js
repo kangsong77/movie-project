@@ -80,18 +80,14 @@ const Regist = () => {
   };
 
   return (
-    <section
-      id='register'
-      className='contact-area uk-contact uk-section uk-child-width-1-3'
-    >
+    <section id='register' className='contact-area uk-contact uk-section'>
       <div className='uk-container'>
         <div className='uk-section-title section-title'>
           <h2>Sign Up</h2>
         </div>
-
-        <form onSubmit={onSubmitHandler}>
-          <div className='uk-grid uk-grid-match uk-grid-medium uk-child-width-1-1@s uk-flex-center'>
-            <div className='item '>
+        <div className='item'>
+          <form id='contactForm' onSubmit={onSubmitHandler}>
+            <div className='item uk-margin'>
               <label>E-mail *</label>
 
               <input
@@ -130,7 +126,6 @@ const Regist = () => {
                 ref={refPwd}
               />
             </div>
-
             <div className='item uk-margin'>
               <label>Confirm Password *</label>
 
@@ -142,17 +137,16 @@ const Regist = () => {
                 onChange={onChangePwdConfirm}
               />
             </div>
-
-            <div className='item'>
-              <button
-                type='submit'
-                className='uk-button uk-button-default uk-flex-center'
-              >
+            <div
+              className='item uk-margin'
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <button type='submit' className='uk-button'>
                 Create Account
               </button>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );

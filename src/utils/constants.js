@@ -1,5 +1,5 @@
-export const SERVER_URL = 'http://localhost:8000/';
-// export const SERVER_URL = 'http://20.194.27.176/';
+// export const SERVER_URL = 'http://localhost:8000/';
+export const SERVER_URL = 'http://api.themovieapp.net/';
 
 export const AROUND_NOW = 'AROUND_NOW';
 export const AROUND_INTRO = 'AROUND_INTRO';

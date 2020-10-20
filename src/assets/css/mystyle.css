@@ -27,7 +27,11 @@
   padding-top: 100px;
 }
 
-#login,
+#login {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
 #register {
   display: flex;
   justify-content: center;
